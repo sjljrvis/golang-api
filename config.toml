@@ -1,0 +1,2 @@
+server="mongodb://sejal:sejal@ds247077.mlab.com:47077/sjl-url"
+database="sjl-url"
