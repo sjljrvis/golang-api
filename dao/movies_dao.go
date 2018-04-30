@@ -1,11 +1,10 @@
 package dao
 
 import (
-	"log"
-
 	. "github.com/sjljrvis/golang-api/models"
 	mgo "gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
+	"log"
 )
 
 type MoviesDAO struct {
@@ -19,7 +18,7 @@ const (
 	COLLECTION = "movies"
 )
 
-//... Establish a connection to database ...
+// Connect  ...  Establish a connection to database ...
 func (m *MoviesDAO) Connect() {
 	log.Print(m.Server)
 	session, err := mgo.Dial(m.Server)
@@ -29,14 +28,14 @@ func (m *MoviesDAO) Connect() {
 	db = session.DB(m.Database)
 }
 
-// Find list of movies ...
+//FindAll Find list of movies ...
 func (m *MoviesDAO) FindAll() ([]Movie, error) {
 	var movies []Movie
 	err := db.C(COLLECTION).Find(bson.M{}).All(&movies)
 	return movies, err
 }
 
-// Find a movie by its id
+//FindByID Find a movie by its id
 func (m *MoviesDAO) FindByID(id string) (Movie, error) {
 	var movie Movie
 	err := db.C(COLLECTION).FindId(bson.ObjectIdHex(id)).One(&movie)

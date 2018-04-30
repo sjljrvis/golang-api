@@ -2,14 +2,12 @@ package controllers
 
 import (
 	"encoding/json"
-	"net/http"
-
-	"gopkg.in/mgo.v2/bson"
-
 	"github.com/gorilla/mux"
 	. "github.com/sjljrvis/golang-api/config"
 	. "github.com/sjljrvis/golang-api/dao"
 	. "github.com/sjljrvis/golang-api/models"
+	"gopkg.in/mgo.v2/bson"
+	"net/http"
 )
 
 var config = Config{}
